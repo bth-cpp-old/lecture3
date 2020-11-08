@@ -10,6 +10,62 @@
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
 
+		<style>
+
+			table.memory {
+				border-collapse: separate;
+				border-spacing: 3px;
+			}
+
+			table.memory td {
+				font-size: 0.6em;
+				width: 1em;
+				border-collapse: collapse;
+				text-align: center;
+				background-color: #404040;
+				color: white;
+			}
+
+			table.memory td.grayed {
+				font-size: 0.6em;
+				border-collapse: collapse;
+				width: 1em;
+				text-align: center;
+				background-color: #404040;
+				color: #707070;
+			}
+
+			table.memory td.empty {
+				font-size: 0.6em;
+				width: 1em;
+				border-collapse: collapse;
+				text-align: center;
+				background-color: #404040;
+				color: #404040;
+			}
+
+			table.memory td.invisible {
+				font-size: 0.6em;
+				width: 1em;
+				text-align: center;
+				background-color: #f0f1eb;
+				color: #f0f1eb;
+			}
+			
+			/* .memory {
+				display: grid;
+				grid-auto-columns: auto;
+				grid-row: 1;			
+			}
+
+			.mem-item {
+				font-size: 0.7em;
+				width: 2em;
+				color: white;
+				background-color: #404040;
+			} */
+		</style>
+
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 	</head>
@@ -26,23 +82,7 @@
 					<h3>Agenda</h3>
 					<ol>
 						<li><b>Strängar</b></li>
-						<ol style="font-size: 0.7em;">
-							<li>Vad är en sträng?</li>
-							<li>std::string</li>
-							<li>Typkonvertering</li>
-							<li>C-style strängar</li>
-						</ol>
 						<li><b>Funktioner</b></li>
-						<ol style="font-size: 0.7em;">
-							<li>Vad är en funktion?</li>
-							<li>Deklaration och definition</li>
-							<li>Argument och parametrar</li>
-							<li>Returtyp och returvärde</li>
-							<li>Call by value</li>
-							<li>Call by reference</li>
-							<li>Defaultparametrar</li>
-							<li>Const</li>
-						</ol>
 						<li><b><em>Command-line arguments</em></b></li>
 					</ol>
 				</section>
@@ -54,29 +94,346 @@
 
 					<section>
 						<h3>Vad är en sträng?</h3>
+						<ul>
+							<li>En sekvens av <em>chars</em></li>
+						</ul>
+						
+						<table class="memory" style="padding-top: 1em">
+							<td>'H'</td>
+							<td>'e'</td>
+							<td>'l'</td>
+							<td>'l'</td>
+							<td>'o'</td>
+							<td>' '</td>
+							<td>'w'</td>
+							<td>'o'</td>
+							<td>'r'</td>
+							<td>'l'</td>
+							<td>'d'</td>
+						</table>
 					</section>
 
-					<section>
-						<h3>std::string</h3>
-					</section>
-
-					<section>
-						<h3>std::string</h3>
-						<h4>Funktioner</h4>
-					</section>
-
-					<section>
-						<h3>std::string</h3>
-						<h4>Operatorer</h4>
-					</section>
-
-					<section>
-						<h3>std::string</h3>
-						<h4>Typkonvertering</h4>
-					</section>
-
-					<section>
+					<section data-transition="slide-in fade-out">
 						<h3>C-style strängar</h3>
+						<ul>
+							<li>Ett arv från C</li>
+							<li>Givet var i minnet strängen börjar</li>
+							<li>Är alltid <em>nullterminerad</em></li>
+						</ul>
+						
+						<table class="memory" style="padding-top: 1em">
+							<td>'H'</td>
+							<td>'e'</td>
+							<td>'l'</td>
+							<td>'l'</td>
+							<td>'o'</td>
+							<td>' '</td>
+							<td>'w'</td>
+							<td>'o'</td>
+							<td>'r'</td>
+							<td>'l'</td>
+							<td>'d'</td>
+							<td>'\0'</td>
+						</table>
+					</section>
+
+					<section data-transition="fade-in" data-auto-animate>
+						<h3>C-style strängar</h3>
+						<ul>
+							<li>Ett arv från C</li>
+							<li>Givet var i minnet strängen börjar</li>
+							<li>Är alltid <em>nullterminerad</em></li>
+						</ul>
+						
+						<table class="memory" style="padding-top: 1em">
+							<td data-id="nullterm" class="grayed">'H'</td>
+							<td data-id="nullterm" class="grayed">'e'</td>
+							<td data-id="nullterm" class="grayed">'l'</td>
+							<td data-id="nullterm" class="grayed">'l'</td>
+							<td data-id="nullterm" class="grayed">'o'</td>
+							<td data-id="nullterm" class="grayed">' '</td>
+							<td data-id="nullterm" class="grayed">'w'</td>
+							<td data-id="nullterm" class="grayed">'o'</td>
+							<td data-id="nullterm" class="grayed">'r'</td>
+							<td data-id="nullterm" class="grayed">'l'</td>
+							<td data-id="nullterm" class="grayed">'d'</td>
+							<td data-id="nullterm">'\0'</td>
+						</table>
+					</section>
+
+					<section data-auto-animate>
+						<h3>C-style strängar</h3>
+						
+						<table class="memory" style="padding-top: 1em">
+							<td data-id="nullterm" class="grayed">'H'</td>
+							<td data-id="nullterm" class="grayed">'e'</td>
+							<td data-id="nullterm" class="grayed">'l'</td>
+							<td data-id="nullterm" class="grayed">'l'</td>
+							<td data-id="nullterm" class="grayed">'o'</td>
+							<td data-id="nullterm" class="grayed">' '</td>
+							<td data-id="nullterm" class="grayed">'w'</td>
+							<td data-id="nullterm" class="grayed">'o'</td>
+							<td data-id="nullterm" class="grayed">'r'</td>
+							<td data-id="nullterm" class="grayed">'l'</td>
+							<td data-id="nullterm" class="grayed">'d'</td>
+							<td data-id="nullterm">'\0'</td>
+						</table>
+
+						<p>Oidentifierat betende om '\0' saknas</p>
+						
+						<pre><code class="txt" data-trim><script type="text/template">
+							Hello world&@P&A&^5;Segmentation Fault
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Strängar i C</h3>
+						
+						<pre><code class="c" data-trim data-line-numbers="3-4|6-7"><script type="text/template">
+							// C code
+							
+							// Raw C string
+							const char* name = "Bob"; // Translates to "Bob\0" <- 4 chars
+
+							// Creates an array of 10 chars
+							char* line = (char*)malloc(10 * sizeof(char));
+						</script></code></pre>
+					</section>
+
+
+					<section>
+						<h3>std::string</h3>
+						
+						<pre><code class="cpp" data-trim><script type="text/template">
+							#include <string>
+						</script></code></pre>
+
+						<ul>
+							<li>Standardbibliotek i C++</li>
+							<li>Ger mycket stöd för stränghantering</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Deklarering och initiering</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1|3-4|6-7|9"><script type="text/template">
+							std::string foo;					// Default initialization: ""
+
+							std::string bar(foo);			// bar is a copy of foo
+							std::string bar = foo;			// bar is a copy of foo
+
+							std::string site("youtube");	// site is copy of "youtube"
+							std::string site = "youtube";	// site is copy of "youtube"
+
+							std::string line(10, 'c');		// Becomes "----------"
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+
+						<ul>
+							<li>Om du ej vill skriva <em>std::</em></li>
+							<li>Obs! endast i .cpp!</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1,4|2,4"><script type="text/template">
+							using namespace std;
+							using std::string;
+
+							string name = "Alice";
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Funktionalitet</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1|3,4|3,6|3,8"><script type="text/template">
+							std::string bird = "Wild turkey";
+
+							// Capacity
+							bird.size();	// == 11
+
+							bird.empty();	// == false
+
+							bird.clear();	// bird == ""
+						</script></code></pre>
+
+						<p>Finns fler</p>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Funktionalitet</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1|3-5|3,7-8"><script type="text/template">
+							std::string bird = "Wild turkey";
+
+							// Element access
+							bird[6];	// == 't'
+							bird.at(6);	// == false
+
+							bird.front();	// == 'W'
+							bird.back();	// == 'y'
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Funktionalitet</h4>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1|3,4|3,6|3,8"><script type="text/template">
+							std::string bird = "Wild turkey";
+
+							// Modifiers
+							bird += " in the west";				// "Wild turkey in the west"
+
+							bird.replace(5, 6, "penguins");	// "Wild penguins in the west"
+
+							bird.erase(12, 1);					// "Wild penguin in the west"
+						</script></code></pre>
+
+						<p>Finns fler</p>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Funktionalitet</h4>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1|3-4|3,6|3,8|3,10"><script type="text/template">
+							std::string bird = "wild turkey is wild";
+
+							// String operations
+							bird.find("wild");	// == 0
+
+							bird.rfind("wild");	// == 15
+
+							bird.substr(5, 6);	// "turkey"
+
+							bird.c_str();			// "wild turkey is wild\0"
+						</script></code></pre>
+
+						<p>Finns fler</p>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Funktionalitet</h4>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1-2|4-6|4,8-10|4,11"><script type="text/template">
+							std::string state = "wild";
+							std::string bird = "turkey";
+
+							// Operators
+							state == bird;	// == false
+							state != bird;	// == true
+							
+							istream >> bird;	/* Reads whitespace-separated
+														string from istream to bird,
+														returns bird */
+							ostream << bird;	// Writes to output stream, returns ostream
+						</script></code></pre>
+
+						<p>Finns fler</p>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Funktionalitet</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1-2|4-5|7-8|10-11"><script type="text/template">
+							std::string state = "wild";
+							std::string bird = "turkey";
+
+							"wild" + "turkey"			// Error
+							state + bird;				// == "wildturkey"
+
+							state + " ";				// == "wild "
+							" " + bird;					// == " turkey"
+
+							state + " " + "turkey";	// == "wild turkey
+							"wild" + " " + bird;		// Error		
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Extra funktionalitet från C</h4>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							#include <cctype>
+						</script></code></pre>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							std::string line = "5\tWild, turkeys.";
+
+							for (char c : line)
+							{
+								// returns positive number if true, 0 if false
+								isalnum(c); // is letter or digit ('5', 'u')
+								isalpha(c); // is letter ('d')
+								isdigit(c); // is digit ('5')
+								iscntrl(c); // is a control char ('\t')
+								islower(c); // is lower case ('i')
+								isupper(c); // is upper case ('U')
+								isprint(c); // is a printable char ('k')
+								ispunct(c); // is a punctation char ('.', ',')
+								isspace(c); // is a whitespace (' ', '\t')
+							}
+						</script></code></pre>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							for (char c : line)
+							{
+								// returns char
+								tolower(c);
+								toupper(c);
+							}		
+						</script></code></pre>
+					</section>
+
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Konvertera från strängar</h4>
+
+						<pre><code class="txt" data-trim><script type="text/template">
+							clang++ main.cpp -std=c++11
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1|3|4-5"><script type="text/template">
+							std::sting number = "5.5";
+							
+							int i = std::stoi(number);		// == 5
+							float f = std::stof(number);	// == 5.43
+							double d = std::stod(number);	// == 5.43
+						</script></code></pre>
+
+						<p>Finns fler</p>
+					</section>
+
+					<section>
+						<h3>std::string</h3>
+						<h4>Konvertera till strängar</h4>
+
+						<pre><code class="txt" data-trim><script type="text/template">
+							clang++ main.cpp -std=c++11
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1-3|5-7"><script type="text/template">
+							int i_nr = 3;
+							float f_nr = 3.14f;
+							double d_nr = 3.14;
+							
+							number = std::to_string(i_nr); // == "3"
+							number = std::to_string(f_nr); // == "3.140000"
+							number = std::to_string(d_nr); // == "3.140000"
+						</script></code></pre>
+
+						<p>Finns fler</p>
 					</section>
 				</section>
 
@@ -87,59 +444,841 @@
 
 					<section>
 						<h3>Vad är en funktion?</h3>
+
+						<ul>
+							<li>Ett kodblock med ett namn</li>
+							<li>Möjligt att kalla på</li>
+							<li>Bra för att återanvända kod</li>
+						</ul>
 					</section>
 
 					<section>
-						<h3>Vad är en funktion?</h3>
+						<h3>En funktions utseende</h3>
 
-						<p>Beståndsdelar</p>
-						<ul>
-							<li>Returvärde</li>
-							<li>Funktionsnmamn</li>
-							<li>Parameterlista</li>
-							<li>Funktionskropp</li>
-						</ul>
+						<pre><code class="cpp" data-trim><script type="text/template">
+							return_type name(parameters)
+							{
+								function body
+							}
+						</script></code></pre>
 
-						<pre data-id="operator"><code class="cpp" data-trim><script type="text/template">
+						<p>Exekveras genom:</p> 
+						<pre><code class="cpp" data-trim><script type="text/template">
+							name(arguments)
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>En funktions utseende</h3>
+						<h4>Exempel</h4>
+
+						<pre><code class="cpp" data-trim><script type="text/template">
 							int add(int a, int b)
 							{
 								return a + b;
 							}
 						</script></code></pre>
+
+						<p>Exekveras genom:</p> 
+						<pre><code class="cpp" data-trim><script type="text/template">
+							int sum = add(5, 1);
+						</script></code></pre>
+					</section>
+					
+					<section>
+						<h3>Användningsexempel</h3>
+
+						<pre><code class="cpp" data-trim><script type="text/template">
+							bool is_even(int number)
+							{
+								return number % 2;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							for (int n : numbers)
+								if (is_even(n))
+									sum += n;
+						</script></code></pre>
 					</section>
 
 					<section>
+						<h3>Användningsexempel</h3>
+
+						<pre><code class="cpp" data-trim><script type="text/template">
+							void print_line(std::string line)
+							{
+								std::cout << line << std::endl;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							std::string to_print;
+							to_print += "The fastest";
+							to_print += " bjärv";
+							to_print += " in the west!";
+
+							print_line(to_print);
+						</script></code></pre>
+
+						<p>Output:</p>
+						<pre><code class="txt" data-trim><script type="text/template">
+							The fastest bjärv in the west! 
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<ul>
+							<li>En funtions <em>utdata</em></li>
+							<li>Kan returnera <b>noll</b> eller <b>ett</b> värde</li>
+							<li>Alla datatyper är tillåtna</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1,4"><script type="text/template">
+							float get_circle_area(/**/)
+							{
+								// ...
+								return area;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="3"><script type="text/template">
+							float get_circle_area(/**/)
+							{
+								// ...
+								return area;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1,4"><script type="text/template">
+							std::string generate_funny_name(/**/)
+							{
+								// ...
+								return name;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="3"><script type="text/template">
+							float get_circle_area(/**/)
+							{
+								// ...
+								return area;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="3"><script type="text/template">
+							std::string generate_funny_name(/**/)
+							{
+								// ...
+								return name;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1,4"><script type="text/template">
+							Cat construct_cat(/**/)
+							{
+								// ...
+								return cat;
+							}
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<ul>
+							<li>Kan existera flera <em>return</em></li>
+							<li>Första exikverade <em>return</em> terminerar funktionen</li>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers="|1|3-4|5"><script type="text/template">
+							int max(int a, int b)
+							{
+								if (a > b)
+									return a;
+								return b;
+							}
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim><script type="text/template">
+							void greet_user()
+							{
+								std::string name;
+								std::cin >> name;
+
+								std::cout << "Hello " << name << ", have a nice day!" << std::endl;
+							}
+						</script></code></pre>
+
+						<p>Om inget returneras, ange <em>void</em></p>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Returtyp</h4>
+
+						<pre><code class="cpp" data-trim data-line-numbers="|6-7"><script type="text/template">
+							void play()
+							{
+								std::cout << "Play game, yes or no?"
+
+								std::string input;
+								if (std::cin >> input && input == "no")
+									return; // Early return
+
+								// Play game ...
+							}
+						</script></code></pre>
+
+						<p><em>void</em> kan kalla på <em>return</em></p>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Parameterlista</h4>
+						
+						<ul>
+							<li>Indata till en funktion</li>
+							<li>Kan finnas noll, en eller fler <em>parametrar</em></li>
+						</ul>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float get_block_volume(float length, float width, float height)
+							{
+								return lenght * width * height;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-transition="slide-in fade-out">
+						<h3>Beståndsdelar</h3>
+						<h4>Parameter vs argument</h4>
+						
+						<ul>
+							<li><b>Parameter</b> är variabeln i funktionen</li>
+							<li><b>Argument</b> är värdet som skickas med</li>
+						</ul>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float get_block_volume(parameters)
+							{
+								/**/
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float volume = get_block_volume(arguments)
+						</script></code></pre>
+					</section>
+
+					<section data-transition="fade-in slide-out" data-auto-animate>
+						<h3>Beståndsdelar</h3>
+						<h4>Parameter vs argument</h4>
+						
+						<ul>
+							<li><b>Parameter</b> är variabeln i funktionen</li>
+							<li><b>Argument</b> är värdet som skickas med</li>
+						</ul>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float get_block_volume(float length, float width, float height)
+							{
+								/**/
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float volume = get_block_volume(3, 5, 8)
+						</script></code></pre>
+					</section>
+
+					<section data-transition="fade-in slide-out" data-auto-animate>
+						<h3>Beståndsdelar</h3>
+						<h4>Parameter vs argument</h4>
+						
+						<ul>
+							<li><b>Parameter</b> är variabeln i funktionen</li>
+							<li><b>Argument</b> är värdet som skickas med</li>
+						</ul>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float get_block_volume(float length, float width, float height)
+							{
+								/**/
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+							float volume = get_block_volume(3, 5, 8)
+						</script></code></pre>
+
+						<p>Antalet parametrar och argument måste matcha!</p>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Funktionskropp</h4>
+						
+						<p>Innehåller all funktionskod</p>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="3-5"><script type="text/template">
+							float get_block_volume(float length, float width, float height)
+							{
+								/*
+									This is the body of the function
+								*/
+							}
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Funktionskropp</h4>
+						
+						<p>Innehåller all funktionskod</p>
+
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="3"><script type="text/template">
+							float get_block_volume(float length, float width, float height)
+							{
+								return length * width * height;
+							}
+						</script></code></pre>
+					</section>
+
+					<section>
+						<h3>Beståndsdelar</h3>
+						<h4>Funktionskropp</h4>
+	
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="2-14"><script type="text/template">
+							int get_user_number_pick() {
+								bool is_number;
+								std::string input;
+								do
+								{
+									std::cout << "Enter a valid number: ";
+									std::cin >> input;
+									
+									is_number = true;
+									for (int i = 0; i < input.size() && is_number; i++)
+										is_number = std::isdigit(c));
+	
+								} while (!is_number);
+								return std::stoi(input);
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
 						<h3>Deklaration och definition</h3>
+
+						<ul>
+							<li><b>Deklaration</b>: <em>det existerar en funktion</em></li>
+							<li><b>Definition</b>: <em>det här gör funktionen</em></li>
+						</ul>
+
+						<pre data-id="func-def"><code class="cpp" data-trim><script type="text/template">
+							void print_hello() // Function definition
+							{
+								std::cout << "Hello!" << std::endl;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Deklaration och definition</h3>
+
+						<ul>
+							<li><b data-id="dec">Deklaration</b>: <em>det existerar en funktion</em></li>
+							<li><b data-id="def">Definition</b>: <em>det här gör funktionen</em></li>
+						</ul>
+
+						<pre><code class="cpp" data-trim><script type="text/template">
+							void print_hello(); // Function declaration
+						</script></code></pre>
+
+						<pre data-id="func-def"><code class="cpp" data-trim><script type="text/template">
+							void print_hello() // Function definition
+							{
+								std::cout << "Hello!" << std::endl;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Deklaration och definition</h3>
+
+						<ul>
+							<li><b data-id="dec">Deklaration</b>: <em>kan ske en eller fler gånger</em></li>
+							<li><b data-id="def">Definition</b>: <em>kan ske en gång</em></li>
+						</ul>
+
+						<pre><code class="cpp" data-trim><script type="text/template">
+							void print_hello(); // Function declaration
+						</script></code></pre>
+
+						<pre data-id="func-def"><code class="cpp" data-trim><script type="text/template">
+							void print_hello() // Function definition
+							{
+								std::cout << "Hello!" << std::endl;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Funktionsdeklaration</h3>
+						
+						<p>Krävs för att kalla på funktionen</p>
+
+						<pre data-id="code"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							std::string get_username();
+							bool username_is_valid();
+							void connect_to_database();
+							
+							int main()
+							{
+								std::string username = get_username();
+
+								if (!username_is_valid())
+									return 1;
+
+								connect_to_database();
+
+								return 0;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Funktionsdefintion</h3>
+						<p>Behövs så kompilatorn vet vad funktionen gör</p>
+						<pre style="font-size: 0.25em;" data-id="code"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							std::string get_username();
+							bool username_is_valid();
+							void connect_to_database();
+							
+							int main()
+							{
+								std::string username = get_username();
+
+								if (!username_is_valid())
+									return 1;
+
+								connect_to_database();
+								
+								return 0;
+							}
+
+							std::string get_username()
+							{
+								/**/
+							}
+
+							bool username_is_valid()
+							{
+								/**/
+							}
+
+							void connect_to_database()
+							{
+								/**/
+							}
+						
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Defaultargument</h3>
+
+						<p>Ibland förekommer samma argumentvärde ofta</p>
+
+						<pre data-id="lottery1"><code class="cpp" data-trim><script type="text/template">
+							void print(std::string text, bool new_line);
+						</script></code></pre>
+
+						<pre data-id="lottery2"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							print("Welcome!", true);
+							// ...
+							print("Please enter your name:", false);
+							// ...
+							print("These are your lottery numbers:", true);
+							// ...
+							print("You won!", true);
+						</script></code></pre>
+
+						<p>Kan vi inte <em>anta</em> att det oftast behövs ny rad?</p>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Defaultargument</h3>
+
+						<p>Ibland förekommer samma argumentvärde ofta</p>
+
+						<pre data-id="lottery1"><code class="cpp" data-trim><script type="text/template">
+							void print(std::string text, bool new_line = true);
+						</script></code></pre>
+
+						<pre data-id="lottery2"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							print("Welcome!");
+							// ...
+							print("Please enter your name:", false);
+							// ...
+							print("These are your lottery numbers:");
+							// ...
+							print("You won!");
+						</script></code></pre>
+
+						<p>Behöver bara ange <em>false</em> vid undantag!</p>
 					</section>
 
 					<section>
-						<h3>Argument och parametrar</h3>
+						<h3>Defaultargument</h3>
+
+						<p>Anges endast i deklarationen</p>
+
+						<pre data-id="lottery1"><code class="cpp" data-trim><script type="text/template">
+							void print(std::string text, bool new_line = true);
+						</script></code></pre>
+
+						<pre data-id="lottery2"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							void print(std::string text, bool new_line)
+							{
+								if (new_line)
+									text += "\n";
+								std::cout << text;
+							}
+						</script></code></pre>
 					</section>
 
 					<section>
-						<h3>Returtyp och returvärde</h3>
+						<h3>Defaultargument</h3>
+
+						<p>Måste vara sist i parameterlistan</p>
+
+						<pre style="font-size:0.45em"><code class="cpp" data-trim data-line-numbers="1,9|3,10|5,11"><script type="text/template">
+							void print(std::string text, bool new_line = true); // Ok!
+
+							void print(std::string text = "missing text", bool new_line = true); // Ok!
+
+							void print(std::string text = "missing text", bool new_line); // Error!
+
+
+
+							print("I'm needed!");
+							print();
+							print(,true); // Invalid syntax!
+						</script></code></pre>
 					</section>
 
 					<section>
 						<h3>Call by value</h3>
+
+						<p>Parametern är en <em>kopia</em></p>
+
+						<h3>Call by reference</h3>
+
+						<p>Parametern är en <em>referens</em></p>
+					</section>
+
+					<section>
+						<h3>Call by value</h3>
+
+						<p>Parametern är en <em>kopia</em></p>
+
+						<pre><code class="cpp" data-trim data-line-numbers="|2,4"><script type="text/template">
+							void perform_birthday(int age)
+							{
+								age++;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="2|1|3|5"><script type="text/template">
+							int current_age = 19;
+
+							perform_birthday(current_age);
+
+							std::cout << current_age << std::endl; // 19;
+						</script></code></pre>
 					</section>
 
 					<section>
 						<h3>Call by reference</h3>
+
+						<p>Parametern är en <em>referens</em></p>
+
+						<pre><code class="cpp" data-trim data-line-numbers="|2,4"><script type="text/template">
+							void perform_birthday(int& age)
+							{
+								age++;
+							}
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim data-line-numbers="2|1|3|5"><script type="text/template">
+							int current_age = 19;
+
+							perform_birthday(current_age);
+
+							std::cout << current_age << std::endl; // 20;
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Varför skicka en referens?</h3>
+
+						<ul>
+							<li><b><em>Modifiera</em> en variabels värde</b></li>
+							<li><b>En eller fler <em>utparametrar</em></b></li>
+							<li><b>Spara minne</b></li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Varför skicka en referens?</h3>
+
+						<ul>
+							<li><b><em>Modifiera</em> en variabels värde</b></li>
+							<li><b>En eller fler <em>utparametrar</em></b></li>
+							<ul>
+								<li>Högst ett returvärde</li>
+								<li>Multipla referensparametrar</li>
+							</ul>
+							<li><b>Spara minne</b></li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Varför skicka en referens?</h3>
+
+						<ul>
+							<li><b><em>Modifiera</em> en variabels värde</b></li>
+							<li><b>En eller fler <em>utparametrar</em></b></li>
+							<ul>
+								<li>Högst ett returvärde</li>
+								<li>Multipla referensparametrar</li>
+							</ul>
+							<li><b>Spara minne</b></li>
+							<ul>
+								<li>Vissa datastrukturer kräver mycket minne!</li>
+								<li>Undvik kopiering</li>
+							</ul>
+						</ul>
 					</section>
 
 					<section>
-						<h3>Defaultparametrar</h3>
+						<h3><em>Const</em>-parametrar</h3>
+
+						<ul>
+							<li>En const-parameter kan <b>inte</b> ändras</li>
+							<li>Använd alltid när det är rimligt</li>
+						</ul>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>Const</em>-parametrar</h3>
+
+						<pre data-id="const"><code class="cpp" data-trim><script type="text/template">
+							// str won't be modified!
+							int find_char(std::string& str, char c);
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>Const</em>-parametrar</h3>
+
+						<pre data-id="const"><code class="cpp" data-trim><script type="text/template">
+							// str won't be modified!
+							int find_char(std::string& str, char c);
+						</script></code></pre>
+
+						<pre><code class="cpp" data-trim><script type="text/template">
+							// str can't be modified!
+							int find_char(const std::string& str, char c);
+						</script></code></pre>
 					</section>
 
 					<section>
-						<h3>Const</h3>
+						<h3>Arrayer som parameter</h3>
+
+						<p>En samling värden;<br>kan inte implicit kopieras</p>
+					</section>
+
+					<section>
+						<h3>Arrayer som parameter</h3>
+			
+						<pre><code class="cpp" data-trim><script type="text/template">
+							// pointer to first element
+							void print_values(const int arr*); 
+
+							// Shows intent that an array is used
+							void print_values(const int arr[]);
+							
+							// Shows intent of specific size
+							// But does not require the specific size
+							void print_values(const int arr[10]);
+						</script></code></pre>
+						<p>Dessa tre är ekvivalenta!</p>
+					</section>
+
+					<section>
+						<h3>Arrayer som parameter</h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers="1|3|5"><script type="text/template">
+							int numbers[] = {5, 125, 9, 10, 42};
+
+							sizeof(arr); // returns size of the array 'numbers'
+
+							print_values(numbers);
+						</script></code></pre>
+			
+						<pre><code class="cpp" data-trim data-line-numbers="3,5|"><script type="text/template">
+							// const int arr[] is equivalent to const int*
+							void print_values(const int arr[])
+							{
+								sizeof(arr); // Returns size of type 'int*'
+							}
+						</script></code></pre>				
+
+						<p>Kan <em>print_values</em> veta storleken?</p>
+					</section>
+
+					<section>
+						<h3>Arrayer som parameter</h3>
+
+						<p>Skicka med storlek som parameter</p>
+						<pre><code class="cpp" data-trim data-line-numbers="1|3-5"><script type="text/template">
+							void print_values(const int arr[], int size)
+							{
+								for (int i = 0; i < size; i++)
+									std::cout << arr[i] << " ";
+								std::cout << std::endl;
+							}
+						</script></code></pre>
 					</section>
 				</section>
+
+
 
 				<section>
 					<section>
 						<h3><em>Command-line arguments</em></h3>
+					</section>
+
+					<section>
+						<h3><em>Command-line arguments</em></h3>
+						
+						<p>När du vill ta indata till ditt <em>program</em></p>
+
+						<pre><code data-trim><script type="text/template">
+							macke@bth$ ./mul 5 8
+							40
+							macke@bth$
+						</script></code></pre>
+					</section>					
+
+					<section data-auto-animate>
+						<h3><em>Command-line arguments</em></h3>
+
+						<pre><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							// Without arguments
+							int main()
+							{
+								// ...
+							}
+						</script></code></pre>
+
+						<pre data-id="args"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							// With arguments
+							int main(int argc, char* argv[])
+							{
+								// ...
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>Command-line arguments</em></h3>
+
+						<pre style="font-size:0.5em" data-id="args"><code class="cpp" data-trim data-line-numbers="|2|4|6-7"><script type="text/template">
+							#include <iostream>
+							int main(int argc, char* argv[])
+							{
+								std::cout << "argc: " << argc << std::endl;
+
+								for (int i = 0; i < argc; i++)
+									std::cout << "argv[" << i << "]: " << argv[i] << std::endl;
+
+								return 0;
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>Command-line arguments</em></h3>
+						
+						<pre style="font-size:0.5em" data-id="args"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							#include <iostream>
+							int main(int argc, char* argv[])
+							{
+								std::cout << "argc: " << argc << std::endl;
+
+								for (int i = 0; i < argc; i++)
+									std::cout << "argv[" << i << "]: " << argv[i] << std::endl;
+
+								return 0;
+							}
+						</script></code></pre>
+
+						<pre data-id="input"><code data-trim><script type="text/template">
+							macke@bth$ ./mul 5 8
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3><em>Command-line arguments</em></h3>
+
+						<pre style="font-size:0.5em" data-id="args"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							#include <iostream>
+							int main(int argc, char* argv[])
+							{
+								std::cout << "argc: " << argc << std::endl;
+
+								for (int i = 0; i < argc; i++)
+									std::cout << "argv[" << i << "]: " << argv[i] << std::endl;
+
+								return 0;
+							}
+						</script></code></pre>
+
+						<pre data-id="input"><code data-trim><script type="text/template">
+							macke@bth$ ./mul 5 8
+							arc: 3
+							argv[0]: ./mul
+							argv[1]: 5
+							argv[2]: 8
+						</script></code></pre>
 					</section>
 				</section>
 		  </div>
