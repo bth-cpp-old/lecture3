@@ -363,11 +363,11 @@
 						<h3>std::string</h3>
 						<h4>Extra funktionalitet från C</h4>
 
-						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+						<pre style="font-size:0.4em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
 							#include <cctype>
 						</script></code></pre>
 
-						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+						<pre style="font-size:0.4em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
 							std::string line = "5\tWild, turkeys.";
 
 							for (char c : line)
@@ -385,7 +385,7 @@
 							}
 						</script></code></pre>
 
-						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+						<pre style="font-size:0.4em"><code class="cpp" data-trim data-line-numbers><script type="text/template">
 							for (char c : line)
 							{
 								// returns char
@@ -666,7 +666,7 @@
 							<li>Kan finnas noll, en eller fler <em>parametrar</em></li>
 						</ul>
 
-						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
+						<pre style="font-size:0.5em"><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
 							float get_block_volume(float length, float width, float height)
 							{
 								return lenght * width * height;
@@ -908,6 +908,52 @@
 							}
 						
 						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Funktioner som liknar varandra</h3>
+						<pre data-id="code"><code class="cpp" data-trim data-line-numbers><script type="text/template">
+							// These two are the same function
+							// Name of paramteters do not change anything
+							void print(std::string line);
+							void print(std::string username);
+						</script></code></pre>
+
+						<pre style="font-size: 0.5em" data-id="code"><code class="cpp" data-trim data-line-numbers="1-4|6-9"><script type="text/template">
+							void print(std::string line)
+							{
+								std::cout << line << std::endl;	
+							}
+
+							void print(std::string username) // Error! Multiple definitions!
+							{
+								std::cout << "Username: " << username << std::endl;	
+							}
+						</script></code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h3>Vad räknas som samma funktion?</h3>
+						<pre style="font-size:0.4em" data-id="code"><code class="cpp" data-trim data-line-numbers="1-4|6-10|6-7,11-12|14-17"><script type="text/template">
+							// These are the same;
+							// return type and parameter lists' datatypes match
+							void print(std::string line);
+							void print(std::string username);
+
+							// Not the same;
+							// list of datatypes in parameters do not match			
+							void print(int number);
+							void print(std::string line);
+							void print(std::string line1, std::string line2);
+							int menu();
+							int menu(std::vector<std::string> choices);
+
+							// Not the same;
+							// return types do not match
+							int menu();
+							void menu();
+						</script></code></pre>
+
 					</section>
 
 					<section data-auto-animate>
