@@ -491,7 +491,7 @@
 						<pre><code class="cpp" data-trim><script type="text/template">
 							bool is_even(int number)
 							{
-								return number % 2;
+								return number % 2 == 0;
 							}
 						</script></code></pre>
 
@@ -691,7 +691,7 @@
 						</script></code></pre>
 
 						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
-							float volume = get_block_volume(arguments)
+							float volume = get_block_volume(arguments);
 						</script></code></pre>
 					</section>
 
@@ -712,7 +712,7 @@
 						</script></code></pre>
 
 						<pre><code class="cpp" data-trim data-line-numbers="1"><script type="text/template">
-							float volume = get_block_volume(3, 5, 8)
+							float volume = get_block_volume(3, 5, 8);
 						</script></code></pre>
 					</section>
 
